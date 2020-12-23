@@ -5,7 +5,6 @@ const { green, white } = require('chalk');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-client.categories = fs.readdirSync('/app/commands/');
 client.prefix = '-';
 
 
@@ -36,6 +35,7 @@ client.on('message', async (message) => {
 
     if (message.author.bot) return;
     if (message.channel.type === 'dm') return;
+    if (!message.content.startsWith(client.prefix)) return;
 
     let content = message.content.split(' ');
     let command = content[0];
