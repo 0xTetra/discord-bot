@@ -6,8 +6,8 @@ module.exports = {
     description: 'Displays a list of bot-related commands.',
     category: 'info',
     run: async (client, message, args) => {
-        let commandList = {};
-        let descriptionList = {};
+        let commandList = [];
+        let descriptionList = [];
         await fs.readdirSync('/app/commands/').forEach(cat => {
             const commands = fs.readdirSync(`/app/commands/${cat}/`).filter(cmd => cmd.endsWith('.js'));
         
@@ -21,6 +21,6 @@ module.exports = {
         const helpEmbed = new Discord.MessageEmbed()
             .setColor('#80ff33')
             .setTitle('Command List')
-            .addField(`${commandList}, ${descriptionList}`) // I kinda forgot what you wanted me to do
+            
     }
 }
