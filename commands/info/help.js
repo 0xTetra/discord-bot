@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 module.exports = {
     name: 'help',
     description: 'Displays a list of bot-related commands.',
