@@ -1,3 +1,4 @@
+require('dovenv').config();
 const Discord = require('discord.js');
 const { green, white } = require('chalk');
 const client = new Discord.Client();
