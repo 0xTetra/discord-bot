@@ -10,7 +10,7 @@ module.exports = {
         
             for (const command of commands) {
                 const com = require(`/app/commands/${cat}/${command}`);
-                message.channel.reply(com.name);
+                message.channel.send(com.name);
             }
         });
     }
