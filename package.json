@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/0xTetra/discord-bot#readme",
   "dependencies": {
-    "discord.js": "^12.5.1"
-  }
+    "chalk": "^4.1.0",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {}
 }
