@@ -28,8 +28,8 @@ client.once('ready', () => {
 
 
 client.on('message', async (message) => {
-    if (message.content.includes('discord.gg')
-    || (message.content.includes('discord.com')) {
+    if (message.content.includes('discord.gg') 
+    || message.content.includes('discord.com')) {
         await message.delete();
         return;
     }
