@@ -7,7 +7,7 @@ module.exports = {
     category: 'info',
     run: async (client, message, args) => {
         console.log(args.length);
-        if (args.length < 0) {
+        if (args.length == 0) {
             const categoryList = [];
             const helpEmbed = new Discord.MessageEmbed()
                 .setColor('#80ff33')
@@ -26,7 +26,7 @@ module.exports = {
 
             helpEmbed.setDescription(categoryList.join('\n'));
             await message.channel.send(helpEmbed);
-        } else if (args.length == 0 && args[0] == 'fun') {
+        } else if (args.length > 0 && args[0] == 'fun') {
             
         }
             
