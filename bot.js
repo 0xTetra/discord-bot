@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 const { green, white } = require('chalk');
-
+const database = require('/app/database/database.js');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -23,6 +23,8 @@ console.clear();
 // When bot is ready
 client.once('ready', () => {
     console.log(green('[SUCCESS] ') + white('Discord Bot Launched.'));
+
+    database.connect();
 });
 
 
