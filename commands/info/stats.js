@@ -11,14 +11,15 @@ module.exports = {
         const totalServers = client.guilds.cache.size;
 
         const getUptime = () => {
-            const pad = (s) => {
-                return (s < 10 ? '0' : '') + s;
-            }
-            var hours = Math.floor(seconds / (60*60));
-            var minutes = Math.floor(seconds % (60*60) / 60);
-            var seconds = Math.floor(seconds % 60);
-            
-            return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+            let totalSeconds = (client.uptime / 1000);
+            let days = Math.floor(totalSeconds / 86400);
+            totalSeconds %= 86400;
+            let hours = Math.floor(totalSeconds / 3600);
+            totalSeconds %= 3600;
+            let minutes = Math.floor(totalSeconds / 60);
+            let seconds = Math.floor(totalSeconds % 60);
+
+            return `${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} Seconds`;
         }
 
         const statsEmbed = new Discord.MessageEmbed()
