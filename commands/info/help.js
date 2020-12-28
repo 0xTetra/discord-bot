@@ -38,7 +38,7 @@ module.exports = {
             const commands = await fs.readdirSync('/app/commands/info/').filter(file => file.endsWith('.js'));
 
             for (const cmd of commands) {
-                funEmbed.addField(cmd.name, cmd.description);
+                infoEmbed.addField(cmd.name, cmd.description);
             }
 
             await message.channel.send(infoEmbed);
