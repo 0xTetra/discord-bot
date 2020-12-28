@@ -16,7 +16,7 @@ module.exports = {
         
             for (const command of commands) {
                 const com = require(`/app/commands/${cat}/${command}`);
-                helpEmbed.addField(cat, com.name);
+                helpEmbed.addField(com,name, com.description);
             }
         });
 
