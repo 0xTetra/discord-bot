@@ -6,7 +6,6 @@ module.exports = {
     description: 'Displays a list of bot-related commands.',
     category: 'info',
     run: async (client, message, args) => {
-        console.log(args.length);
         if (args.length == 0) {
             const categoryList = [];
             const helpEmbed = new Discord.MessageEmbed()
@@ -15,12 +14,7 @@ module.exports = {
 
 
             await fs.readdirSync('/app/commands/').forEach(cat => {
-                const category = fs.readdirSync(`/app/commands/`);
-            
-                for (const c of category) {
                     categoryList.push(c);
-                }
-
             });
             console.log(categoryList);
             helpEmbed.setDescription(categoryList.join('\n'));
