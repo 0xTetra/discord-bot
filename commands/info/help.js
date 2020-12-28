@@ -14,9 +14,8 @@ module.exports = {
 
 
             await fs.readdirSync('/app/commands/').forEach(cat => {
-                    categoryList.push(c);
+                    categoryList.push(cat);
             });
-            console.log(categoryList);
             helpEmbed.setDescription(categoryList.join('\n'));
             await message.channel.send(helpEmbed);
         } else if (args.length > 0 && args[0] == 'fun') {
