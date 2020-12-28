@@ -10,8 +10,8 @@ module.exports = {
         await axios.get('https://meme-api.herokuapp.com/gimme').then(meme => {
             const memeEmbed = new Discord.MessageEmbed()
                 .setColor('#80ff33')
-                .setTitle(meme.body.subreddit)
-                .setImage(meme.body.url)
+                .setTitle(meme.data.subreddit)
+                .setImage(meme.data.url)
 
             message.channel.send(memeEmbed);
         });
