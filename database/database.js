@@ -1,4 +1,3 @@
-require('dotenv').config();
 const { green, white } = require('chalk');
 const MongoClient = require('mongodb').MongoClient;
 const uri = process.env.MONGODB_URI;
