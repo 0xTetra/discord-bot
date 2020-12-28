@@ -48,8 +48,15 @@ client.on('message', async (message) => {
 });
 
 
+// Add new guild to database
 client.on('guildCreate', async (guild) => {
     await database.addGuild(guild);
+});
+
+
+// Remove guild from database
+client.on('guildDelete', async (guild) => {
+    await database.removeGuild(guild);
 });
 
 

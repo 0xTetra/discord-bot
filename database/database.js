@@ -36,7 +36,19 @@ module.exports = {
                 resolve(true);
             } else {
                 await module.exports.connect();
-                this.addGuild(guild);
+                await this.addGuild(guild);
+            }
+        });
+    },
+
+    removeGuild: (guild) => {
+        return new Promise(async (resolve, reject) => {
+            if (client.isConnected) {
+                await db.collection('servers').deleteOne({ guildID: guild.id });
+                resolve(true);
+            } else {
+                await module.exports.connect();
+                await this.removeGuild(guild);
             }
         });
     }
