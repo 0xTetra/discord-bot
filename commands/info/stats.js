@@ -10,7 +10,7 @@ module.exports = {
         const totalUsers = client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)
         const totalServers = client.guilds.cache.size;
 
-        const statsEmbed = new Discord.Embed()
+        const statsEmbed = new Discord.MessageEmbed()
             .setColor('#80ff33')
             .setTitle('Statistics')
             .addField('Total Users: ', totalUsers)
