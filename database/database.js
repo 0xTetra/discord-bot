@@ -7,7 +7,7 @@ let db;
 
 module.exports = {
     connect: async () => {
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             await client.connect(err => {
                 if (err) reject(err);
 
@@ -19,7 +19,7 @@ module.exports = {
     },
 
     disconnect: () => {
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             if (client.isConnected) {
                 await client.close();
                 resolve(true);
@@ -30,12 +30,12 @@ module.exports = {
     },
 
     addGuild: (guild) => {
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             if (client.isConnected) {
                 await db.collection('servers').insertOne({ guildID: guild.id });
                 resolve(true);
             } else {
-                module.exports.connect();
+                await module.exports.connect();
                 this.addGuild(guild);
             }
         });

@@ -24,7 +24,7 @@ console.clear();
 client.once('ready', () => {
     console.log(green('[SUCCESS] ') + white('Discord Bot Launched.'));
 
-    database.connect();
+    await database.connect();
 });
 
 
