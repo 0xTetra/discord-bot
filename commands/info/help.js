@@ -15,15 +15,14 @@ module.exports = {
 
 
             await fs.readdirSync('/app/commands/').forEach(cat => {
-                const category = fs.readdirSync(`/app/commands/`).filter(cmd => cmd.endsWith('.js'));
+                const category = fs.readdirSync(`/app/commands/`);
             
                 for (const c of category) {
-                    const com = require(`/app/commands/${c}`);
                     categoryList.push(c);
                 }
 
             });
-
+            console.log(categoryList);
             helpEmbed.setDescription(categoryList.join('\n'));
             await message.channel.send(helpEmbed);
         } else if (args.length > 0 && args[0] == 'fun') {
