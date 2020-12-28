@@ -48,4 +48,9 @@ client.on('message', async (message) => {
 });
 
 
+client.on('guildCreate', async (guild) => {
+    await database.addGuild(guild);
+});
+
+
 client.login(process.env.TOKEN);
