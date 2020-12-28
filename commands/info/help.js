@@ -24,10 +24,8 @@ module.exports = {
                 .setTitle('Fun Command List')
 
             const commands = await fs.readdirSync('/app/commands/fun/').filter(file => file.endsWith('.js'));
-            console.log(commands);
 
             for (const cmd of commands) {
-                console.log(cmd);
                 const command = require(`/app/commands/fun/${cmd}`);
                 funEmbed.addField(command.name, command.description);
             }
