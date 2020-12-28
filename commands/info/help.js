@@ -18,8 +18,30 @@ module.exports = {
             });
             helpEmbed.setDescription(categoryList.join('\n'));
             await message.channel.send(helpEmbed);
-        } else if (args.length > 0 && args[0] == 'fun') {
-            
+        } else if (args[0] == 'fun') {
+            const funEmbed = new Discord.MessageEmbed()
+                .setColor('80ff33')
+                .setTitle('Fun Command List')
+
+            const commands = await fs.readdirSync('/app/commands/fun/').filter(file => file.endsWith('.js'));
+
+            for (const cmd of commands) {
+                funEmbed.addField(cmd.name, cmd.description);
+            }
+
+            await message.channel.send(funEmbed);
+        } else if (args[0] == 'info') {
+            const infoEmbed = new Discord.MessageEmbed()
+                .setColor('80ff33')
+                .setTitle('Info Command List')
+
+            const commands = await fs.readdirSync('/app/commands/info/').filter(file => file.endsWith('.js'));
+
+            for (const cmd of commands) {
+                funEmbed.addField(cmd.name, cmd.description);
+            }
+
+            await message.channel.send(infoEmbed);
         }
             
     }
