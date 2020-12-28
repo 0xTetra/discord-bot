@@ -21,7 +21,7 @@ fs.readdirSync('/app/commands/').forEach(cat => {
 
 console.clear();
 // When bot is ready
-client.once('ready', () => {
+client.once('ready', async () => {
     console.log(green('[SUCCESS] ') + white('Discord Bot Launched.'));
 
     await database.connect();
