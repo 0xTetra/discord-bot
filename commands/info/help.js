@@ -26,7 +26,8 @@ module.exports = {
             const commands = await fs.readdirSync('/app/commands/fun/').filter(file => file.endsWith('.js'));
 
             for (const cmd of commands) {
-                funEmbed.addField(cmd.name, cmd.description);
+                const command = require(`/app/commands/fun/${cmd}`);
+                funEmbed.addField(command.name, command.description);
             }
 
             await message.channel.send(funEmbed);
@@ -38,7 +39,8 @@ module.exports = {
             const commands = await fs.readdirSync('/app/commands/info/').filter(file => file.endsWith('.js'));
 
             for (const cmd of commands) {
-                infoEmbed.addField(cmd.name, cmd.description);
+                const command = require(`/app/commands/info/${cmd}`);
+                infoEmbed.addField(command.name, command.description);
             }
 
             await message.channel.send(infoEmbed);
