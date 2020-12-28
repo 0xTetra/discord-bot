@@ -6,21 +6,28 @@ module.exports = {
     description: 'Displays a list of bot-related commands.',
     category: 'info',
     run: async (client, message, args) => {
-        const helpEmbed = new Discord.MessageEmbed()
-            .setColor('#80ff33')
-            .setTitle('Command List')
+        if (args.length < 0) {
+            const categoryList = [];
+            const helpEmbed = new Discord.MessageEmbed()
+                .setColor('#80ff33')
+                .setTitle('Category List')
 
 
-        await fs.readdirSync('/app/commands/').forEach(cat => {
-            const commands = fs.readdirSync(`/app/commands/${cat}/`).filter(cmd => cmd.endsWith('.js'));
-        
-            for (const command of commands) {
-                const com = require(`/app/commands/${cat}/${command}`);
-                helpEmbed.addField(`${client.prefix}${com.name}`, com.description);
-            }
-        });
+            await fs.readdirSync('/app/commands/').forEach(cat => {
+                const category = fs.readdirSync(`/app/commands/`).filter(cmd => cmd.endsWith('.js'));
+            
+                for (const c of category) {
+                    const com = require(`/app/commands/${c}`);
+                    categoryList.push(c);
+                }
 
-        await message.channel.send(helpEmbed);
+                helpEmbed.setDescription(categoryList.join('\n'));
+            });
+
+            await message.channel.send(helpEmbed);
+        } else if (args.length == 0 && args[0] == 'fun') {
+            
+        }
             
     }
 }
