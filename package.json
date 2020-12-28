@@ -18,7 +18,8 @@
   "homepage": "https://github.com/0xTetra/discord-bot#readme",
   "dependencies": {
     "chalk": "^4.1.0",
-    "discord.js": "^12.5.1"
+    "discord.js": "^12.5.1",
+    "mongodb": "^3.6.3"
   },
   "devDependencies": {}
 }
