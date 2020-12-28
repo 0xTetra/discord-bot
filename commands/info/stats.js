@@ -7,7 +7,7 @@ module.exports = {
     description: 'Shows bot statistics.',
     category: 'info',
     run: async (client, message, args) => {
-        const totalUsers = client.guilds.members.cache.filter(member => !member.user.bot).size;
+        const totalUsers = client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)
         const totalServers = client.guilds.cache.size;
 
         const statsEmbed = new Discord.Embed()
