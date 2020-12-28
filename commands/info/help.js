@@ -32,7 +32,7 @@ module.exports = {
             await message.channel.send(funEmbed);
         } else if (args[0] == 'info') {
             const infoEmbed = new Discord.MessageEmbed()
-                .setColor('80ff33')
+                .setColor('#80ff33')
                 .setTitle('Info Command List')
 
             const commands = await fs.readdirSync('/app/commands/info/').filter(file => file.endsWith('.js'));
@@ -42,6 +42,13 @@ module.exports = {
             }
 
             await message.channel.send(infoEmbed);
+        } else {
+            const invalidSyntax = new Discord.MessageEmbed()
+                .setColor('#ff0000')
+                .setTitle('Invalid Syntax')
+                .setDescription(`Usage: ${client.prefix}help [Category]`)
+
+            await message.channel.send(invalidSyntax);
         }
             
     }
