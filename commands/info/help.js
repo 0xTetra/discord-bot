@@ -6,6 +6,7 @@ module.exports = {
     description: 'Displays a list of bot-related commands.',
     category: 'info',
     run: async (client, message, args) => {
+        console.log(args.length);
         if (args.length < 0) {
             const categoryList = [];
             const helpEmbed = new Discord.MessageEmbed()
@@ -21,9 +22,9 @@ module.exports = {
                     categoryList.push(c);
                 }
 
-                helpEmbed.setDescription(categoryList.join('\n'));
             });
 
+            helpEmbed.setDescription(categoryList.join('\n'));
             await message.channel.send(helpEmbed);
         } else if (args.length == 0 && args[0] == 'fun') {
             
