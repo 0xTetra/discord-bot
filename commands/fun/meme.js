@@ -5,7 +5,7 @@ const axios = require('axios');
 module.exports = {
     name: 'meme',
     description: 'Generates a random meme from a subreddit.',
-    category: 'meme',
+    category: 'fun',
     run: async (client, message, args) => {
         await axios.get('https://meme-api.herokuapp.com/gimme').then(meme => {
             const memeEmbed = new Discord.MessageEmbed()
