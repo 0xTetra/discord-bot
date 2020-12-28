@@ -27,7 +27,7 @@ module.exports = {
 
             for (const cmd of commands) {
                 const command = require(`/app/commands/fun/${cmd}`);
-                funEmbed.addField(command.name, command.description);
+                funEmbed.addField(`${client.prefix}command.name`, command.description);
             }
 
             await message.channel.send(funEmbed);
@@ -40,7 +40,7 @@ module.exports = {
 
             for (const cmd of commands) {
                 const command = require(`/app/commands/info/${cmd}`);
-                infoEmbed.addField(command.name, command.description);
+                infoEmbed.addField(`${client.prefix}command.name`, command.description);
             }
 
             await message.channel.send(infoEmbed);
