@@ -13,8 +13,9 @@ module.exports = {
         const statsEmbed = new Discord.MessageEmbed()
             .setColor('#80ff33')
             .setTitle('Statistics')
-            .addField('Total Users: ', totalUsers)
-            .addField('Total Servers: ', totalServers)
+            .addField('Total Users: ', totalUsers, true)
+            .addField('Total Servers: ', totalServers, true)
+            .addField('Node Version: ', process.version, false)
 
         await message.channel.send(statsEmbed);
     }
