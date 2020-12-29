@@ -31,7 +31,7 @@ module.exports = {
 
                 for (const cmd of commands) {
                     const command = require(`/app/commands/info/${cmd}`);
-                    infoEmbed.addField(`${client.prefix}${command.name}`, command.description);
+                    catEmbed.addField(`${client.prefix}${command.name}`, command.description);
                 }
 
                 await message.channel.send(catEmbed);
