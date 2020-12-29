@@ -30,7 +30,7 @@ module.exports = {
                 const commands = await fs.readdirSync(`/app/commands/${args[0]}/`).filter(file => file.endsWith('.js'));
 
                 for (const cmd of commands) {
-                    const command = require(`/app/commands/info/${cmd}`);
+                    const command = require(`/app/commands/${args[0]}/${cmd}`);
                     catEmbed.addField(`${client.prefix}${command.name}`, command.description);
                 }
 
