@@ -38,6 +38,7 @@ client.on('message', async (message) => {
     if (message.channel.type === 'dm') return;
 
     database.getPrefix(message.guild).then(prefix => {
+        if (!prefix) prefix = '-';
         if (!message.content.startsWith(prefix)) return;
 
         let content = message.content.split(' ');
