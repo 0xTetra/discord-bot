@@ -13,7 +13,7 @@ module.exports = {
                 .setTitle(joke.data.setup)
                 .setDescription(joke.data.delivery)
 
-            message.channel.send(jokeEmbed);
+            return await message.channel.send(jokeEmbed);
         });
     }
 }

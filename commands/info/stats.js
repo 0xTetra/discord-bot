@@ -30,6 +30,6 @@ module.exports = {
             .addField('Node Version:', process.version, true)
             .addField('Uptime:', getUptime(), false)
 
-        await message.channel.send(statsEmbed);
+        return await message.channel.send(statsEmbed);
     }
 }

@@ -51,5 +51,29 @@ module.exports = {
                 await this.removeGuild(guild);
             }
         });
+    },
+
+    setPrefix: (guild, prefix) => {
+        return new Promise(async (resolve, reject) => {
+            if (client.isConnected) {
+                await db.collection('servers').updateOne({ guildID: guild.id }, prefix, { $set: { prefix: prefix } });
+                resolve(true);
+            } else {
+                await module.exports.connect();
+                await this.setPrefix(guild, prefix);
+            }
+        });
+    },
+
+    getPrefix: (guild) => {
+        return new Promise(async (resolve, reject) => {
+            if (client.isConnected) {
+                const prefix = await db.collection('servers').findOne({ guildID: guild.id })
+                resolve(prefix);
+            } else {
+                await module.exports.connect();
+                await this.getPrefix(guild);
+            }
+        });
     }
 }

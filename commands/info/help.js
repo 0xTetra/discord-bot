@@ -20,7 +20,7 @@ module.exports = {
                 .setTitle('Category List')
 
             helpEmbed.setDescription(categories.join('\n'));
-            await message.channel.send(helpEmbed);
+            return await message.channel.send(helpEmbed);
         } else {
             if (categories.indexOf(args[0]) > -1) {
                 const capitalized = capitalize(args[0]);
@@ -35,14 +35,14 @@ module.exports = {
                     catEmbed.addField(`${client.prefix}${command.name}`, command.description);
                 }
 
-                await message.channel.send(catEmbed);
+                return await message.channel.send(catEmbed);
             } else {
                 const invalidSyntax = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Invalid Syntax')
                 .setDescription(`Usage: ${client.prefix}help [Category]`)
 
-                await message.channel.send(invalidSyntax);
+                return await message.channel.send(invalidSyntax);
             }
         }
             
