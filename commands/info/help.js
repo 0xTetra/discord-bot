@@ -5,7 +5,7 @@ module.exports = {
     name: 'help',
     description: 'Displays a list of bot-related commands.',
     category: 'info',
-    run: async (client, message, args) => {
+    run: async (client, message, args, prefix) => {
         const categories = await fs.readdirSync(`/app/commands/`);
 
         const capitalize = (s) => {
@@ -32,7 +32,7 @@ module.exports = {
 
                 for (const cmd of commands) {
                     const command = require(`/app/commands/${args[0]}/${cmd}`);
-                    catEmbed.addField(`${client.prefix}${command.name}`, command.description);
+                    catEmbed.addField(`${prefix}${command.name}`, command.description);
                 }
 
                 return await message.channel.send(catEmbed);
@@ -40,7 +40,7 @@ module.exports = {
                 const invalidSyntax = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Invalid Syntax')
-                .setDescription(`Usage: ${client.prefix}help [Category]`)
+                .setDescription(`Usage: ${prefix}help [Category]`)
 
                 return await message.channel.send(invalidSyntax);
             }
