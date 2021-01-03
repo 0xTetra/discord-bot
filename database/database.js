@@ -69,7 +69,7 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             if (client.isConnected) {
                 const prefix = await db.collection('servers').findOne({ guildID: guild.id })
-                console.log(prefix);
+                console.log(prefix['prefix']);
                 resolve(prefix);
             } else {
                 await module.exports.connect();
