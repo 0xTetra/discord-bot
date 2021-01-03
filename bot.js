@@ -45,7 +45,7 @@ client.on('message', async (message) => {
         let args = content.slice(1);
 
         let commandFile = client.commands.get(command.slice(prefix.length));
-        if (commandFile) commandFile.run(client, message, arg, prefix);
+        if (commandFile) commandFile.run(client, message, args, prefix);
     });
 
 });
