@@ -36,9 +36,7 @@ client.on('message', async (message) => {
 
     if (message.author.bot) return;
     if (message.channel.type === 'dm') return;
-    if (!message.content.startsWith(client.prefix)) return;
 
-    await message.channel.send('1');
     database.getPrefix(message.guild).then(prefix => {
         console.log(prefix);
         if (prefix) {
@@ -47,7 +45,8 @@ client.on('message', async (message) => {
             client.prefix = '-';
         }
     });
-    await message.channel.send('2');
+
+    if (!message.content.startsWith(client.prefix)) return;
 
     let content = message.content.split(' ');
     let command = content[0];
