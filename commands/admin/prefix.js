@@ -38,13 +38,13 @@ module.exports = {
                 return await message.channel.send(invalidSyntax);
             }
         } else {
-            database.getPrefix(message.guild).then(prefix => {
+            await database.getPrefix(message.guild).then(prefix => {
                 const prefixEmbed = new Discord.MessageEmbed()
                     .setColor('#80ff33')
                     .setTitle('Guild Prefix')
                     .setDescription(`Your guild\'s prefix is \`${prefix}\``)
 
-                return await message.channel.send(prefixEmbed);
+                return message.channel.send(prefixEmbed);
             });
         }
     }
