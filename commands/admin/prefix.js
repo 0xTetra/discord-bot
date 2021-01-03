@@ -15,6 +15,37 @@ module.exports = {
 
             return await message.channel.send(permissionEmbed);
         }
-        database.getPrefix(message.guild).then(prefix => console.log(prefix));
+        
+
+        if (args.length == 1) {
+            if (args[0] == 'set') {
+                const prefix = args[1];
+
+                await database.setPrefix(message.guild, prefix);
+
+                const prefixSuccess = new Discord.MessageEmbed()
+                    .setColor('#80ff33')
+                    .setTitle('Guild Prefix Changed')
+                    .setDescription(`You have successfully changed the guild's prefix to \`${prefix}\`.`);
+
+                return await message.channel.send(prefixSuccess);
+            } else {
+                const invalidSyntax = new Discord.MessageEmbed()
+                    .setColor('#ff0000')
+                    .setTitle('Invalid Syntax')
+                    .setDescription(`Usage: ${client.prefix}prefix set <prefix>`)
+
+                return await message.channel.send(invalidSyntax);
+            }
+        } else {
+            database.getPrefix(message.guild).then(prefix => {
+                const prefixEmbed = new Discord.MessageEmbed()
+                    .setColor('#80ff33')
+                    .setTitle('Guild Prefix')
+                    .setDescription(`Your guild\'s prefix is \`${prefix}\``)
+
+                return await message.channel.send(prefixEmbed);
+            });
+        }
     }
 }
