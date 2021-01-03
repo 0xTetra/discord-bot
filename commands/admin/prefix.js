@@ -5,7 +5,7 @@ module.exports = {
     name: 'prefix',
     description: 'Displays or sets your guild prefix.',
     category: 'admin',
-    run: async (client, message, args) => {
+    run: async (client, message, args, prefix) => {
 
         if (!message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
             const permissionEmbed = new Discord.MessageEmbed()
@@ -37,14 +37,12 @@ module.exports = {
                 return await message.channel.send(invalidSyntax);
             }
         } else {
-            await database.getPrefix(message.guild).then(prefix => {
-                const prefixEmbed = new Discord.MessageEmbed()
-                    .setColor('#80ff33')
-                    .setTitle('Guild Prefix')
-                    .setDescription(`This guild\'s prefix is \`${prefix}\``)
+            const prefixEmbed = new Discord.MessageEmbed()
+                .setColor('#80ff33')
+                .setTitle('Guild Prefix')
+                .setDescription(`This guild\'s prefix is \`${prefix}\``)
 
-                return message.channel.send(prefixEmbed);
-            });
+            return message.channel.send(prefixEmbed);
         }
     }
 }
