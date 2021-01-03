@@ -15,6 +15,6 @@ module.exports = {
 
             return await message.channel.send(permissionEmbed);
         }
-        console.log(database.getPrefix(message.guild));
+        database.getPrefix(message.guild).then(prefix => message.channel.send(prefix));
     }
 }
