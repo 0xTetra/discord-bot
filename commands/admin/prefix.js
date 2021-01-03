@@ -16,7 +16,6 @@ module.exports = {
             return await message.channel.send(permissionEmbed);
         }
         
-        await message.channel.send(args.length);
         if (args.length == 2) {
             if (args[0] == 'set') {
                 const prefix = args[1];
