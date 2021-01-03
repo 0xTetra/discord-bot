@@ -17,7 +17,7 @@ module.exports = {
         }
         
         await message.channel.send(args.length);
-        if (args.length == 1) {
+        if (args.length == 2) {
             if (args[0] == 'set') {
                 const prefix = args[1];
 
