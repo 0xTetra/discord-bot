@@ -39,6 +39,7 @@ client.on('message', async (message) => {
     if (!message.content.startsWith(client.prefix)) return;
 
     database.getPrefix(message.guild).then(prefix => {
+        console.log(prefix);
         if (prefix) {
             client.prefix = prefix;
         } else {
