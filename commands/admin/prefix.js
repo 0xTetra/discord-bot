@@ -7,7 +7,7 @@ module.exports = {
     category: 'admin',
     run: async (client, message, args) => {
 
-        if (!message.author.hasPermission('ADMINISTRATOR')) {
+        if (!message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
             const permissionEmbed = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Insufficent Permissions')
