@@ -38,22 +38,16 @@ client.on('message', async (message) => {
     if (message.channel.type === 'dm') return;
 
     database.getPrefix(message.guild).then(prefix => {
-        console.log(prefix);
-        if (prefix) {
-            client.prefix = prefix;
-        } else {
-            client.prefix = '-';
-        }
+        if (!message.content.startsWith(prefix)) return;
+
+        let content = message.content.split(' ');
+        let command = content[0];
+        let args = content.slice(1);
+
+        let commandFile = client.commands.get(command.slice(prefix.length));
+        if (commandFile) commandFile.run(client, message, args);
     });
-    console.log(client.prefix);
-    if (!message.content.startsWith(client.prefix)) return;
 
-    let content = message.content.split(' ');
-    let command = content[0];
-    let args = content.slice(1);
-
-    let commandFile = client.commands.get(command.slice(client.prefix.length));
-    if (commandFile) commandFile.run(client, message, args);
 });
 
 
