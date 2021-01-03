@@ -13,7 +13,7 @@ module.exports = {
                 .setTitle(`via r/${meme.data.subreddit}`)
                 .setImage(meme.data.url)
 
-            return await message.channel.send(memeEmbed);
+            return message.channel.send(memeEmbed);
         });
     }
 }
