@@ -41,7 +41,7 @@ module.exports = {
                 const prefixEmbed = new Discord.MessageEmbed()
                     .setColor('#80ff33')
                     .setTitle('Guild Prefix')
-                    .setDescription(`Your guild\'s prefix is \`${prefix}\``)
+                    .setDescription(`This guild\'s prefix is \`${prefix}\``)
 
                 return message.channel.send(prefixEmbed);
             });
