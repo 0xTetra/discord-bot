@@ -5,7 +5,6 @@ const database = require('/app/database/database.js');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-client.prefix = '-';
 
 
 // Command Handler
@@ -38,6 +37,14 @@ client.on('message', async (message) => {
     if (message.author.bot) return;
     if (message.channel.type === 'dm') return;
     if (!message.content.startsWith(client.prefix)) return;
+
+    database.getPrefix(message.guild).then(prefix => {
+        if (prefix) {
+            client.prefix = prefix;
+        } else {
+            client.prefix = '-';
+        }
+    });
 
     let content = message.content.split(' ');
     let command = content[0];
