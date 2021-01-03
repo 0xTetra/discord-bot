@@ -45,7 +45,7 @@ client.on('message', async (message) => {
             client.prefix = '-';
         }
     });
-
+    console.log(client.prefix);
     if (!message.content.startsWith(client.prefix)) return;
 
     let content = message.content.split(' ');
