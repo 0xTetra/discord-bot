@@ -56,7 +56,7 @@ module.exports = {
     setPrefix: (guild, prefix) => {
         return new Promise(async (resolve, reject) => {
             if (client.isConnected) {
-                await db.collection('servers').updateOne({ guildID: guild.id }, prefix, { $set: { prefix: prefix } });
+                await db.collection('servers').updateOne({ guildID: guild.id }, { $set: { prefix: prefix } });
                 resolve(true);
             } else {
                 await module.exports.connect();
