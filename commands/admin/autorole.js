@@ -20,7 +20,7 @@ module.exports = {
             if (args[0] == 'set') {
                 const role = args[1];
 
-                console.log(role.name);
+                console.log(role.id);
             } else {
                 const invalidSyntax = new Discord.MessageEmbed()
                     .setColor('#ff0000')
