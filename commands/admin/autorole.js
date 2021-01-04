@@ -18,9 +18,17 @@ module.exports = {
         
         if (args.length == 2) {
             if (args[0] == 'set') {
-                const role = args[1].replace(/[\\<>@#&!]/g, "");;
+                const role = args[1];
+                const roleID = role.replace(/[\\<>@#&!]/g, "")
 
-                console.log(role);
+                await database.setAutorole(guild, roleID);
+
+                const autoroleSuccess = new Discord.MessageEmbed()
+                    .setColor('#80ff33')
+                    .setTitle('Guild Auto Role Changed')
+                    .setDescription(`You have successfully changed the auto role to ${role}.`);
+
+                return await message.channel.send(autoroleSuccess);
             } else {
                 const invalidSyntax = new Discord.MessageEmbed()
                     .setColor('#ff0000')
@@ -30,12 +38,14 @@ module.exports = {
                 return await message.channel.send(invalidSyntax);
             }
         } else {
-            const prefixEmbed = new Discord.MessageEmbed()
-                .setColor('#80ff33')
-                .setTitle('Guild Prefix')
-                .setDescription(`This guild's prefix is \`${prefix}\``)
+            await database.getAutorole(message.guild).then(autorole => {
+                const autoroleEmbed = new Discord.MessageEmbed()
+                    .setColor('#80ff33')
+                    .setTitle('Guild Auto Role')
+                    .setDescription(`This guild's auto role is \`${autorole}\``)
 
-            return message.channel.send(prefixEmbed);
+                return message.channel.send(autoroleEmbed);
+            });
         }
     }
 }
