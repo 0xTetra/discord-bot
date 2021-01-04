@@ -39,11 +39,11 @@ module.exports = {
             }
         } else {
             await database.getAutorole(message.guild).then(autorole => {
-                if (!autorole) autorole = 'None';
+                if (!autorole) autorole = 'None'; else autorole = `<@&${autorole}>`
                 const autoroleEmbed = new Discord.MessageEmbed()
                     .setColor('#80ff33')
                     .setTitle('Guild Auto Role')
-                    .setDescription(`This guild's auto role is <@&${autorole}>.`)
+                    .setDescription(`This guild's auto role is ${autorole}.`)
 
                 return message.channel.send(autoroleEmbed);
             });
