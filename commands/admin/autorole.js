@@ -42,7 +42,7 @@ module.exports = {
                 const autoroleEmbed = new Discord.MessageEmbed()
                     .setColor('#80ff33')
                     .setTitle('Guild Auto Role')
-                    .setDescription(`This guild's auto role is \`${autorole}\``)
+                    .setDescription(`This guild's auto role is <@&${autorole}>`)
 
                 return message.channel.send(autoroleEmbed);
             });
