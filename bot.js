@@ -20,10 +20,24 @@ fs.readdirSync('/app/commands/').forEach(cat => {
 
 console.clear();
 // When bot is ready
-client.once('ready', async () => {
+client.on('ready', async () => {
+    const totalUsers = client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)
+    const totalServers = client.guilds.cache.size;
+
+    const activities = [
+        `${totalUsers} Users`,
+        `${totalServers} Servers`
+    ];
+
     console.log(green('[SUCCESS] ') + white('Discord Bot Launched.'));
 
     await database.connect();
+
+    await client.user.setActivity(activities[Math.floor(Math.random() * (activities.length - 1) + 1)], { type: 'WATCHING' },
+        setInterval(() => {
+            client.user.setActivity(activities[Math.floor(Math.random() * (activities.length - 1) + 1)]);
+        }, 10000)
+    );
 });
 
 
