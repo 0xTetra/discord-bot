@@ -21,7 +21,7 @@ module.exports = {
                 const role = args[1];
                 const roleID = role.replace(/[\\<>@#&!]/g, "")
 
-                await database.setAutorole(guild, roleID);
+                await database.setAutorole(message.guild, roleID);
 
                 const autoroleSuccess = new Discord.MessageEmbed()
                     .setColor('#80ff33')
