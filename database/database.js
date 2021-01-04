@@ -75,5 +75,17 @@ module.exports = {
                 await this.getPrefix(guild);
             }
         });
+    },
+
+    setAutorole: (guild, role) => {
+        return new Promise(async (resolve, reject) => {
+            if (client.isConnected) {
+                await db.collection('servers').updateOne({ guildID: guild.id }, { $set: { autorole: role } });
+                resolve(true);
+            } else {
+                await module.exports.connect();
+                await this.setPrefix(guild, role);
+            }
+        });
     }
 }
