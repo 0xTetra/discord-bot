@@ -64,4 +64,13 @@ client.on('guildDelete', async (guild) => {
 });
 
 
+// Give role upon member join
+client.on('guildMemberAdd', async (member) => {
+    await database.getAutorole(message.guild).then(autorole => {
+        if (!autorole) return;
+        const role = member.guild.roles.cache.find(role => role.id === autorole);
+        member.roles.add(role);
+    });
+});
+
 client.login(process.env.TOKEN);
