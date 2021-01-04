@@ -102,11 +102,10 @@ module.exports = {
     },
 
     removeAutorole: (guild) => {
-        return new Promise(async (Resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             if (client.isConnected) {
                 await db.collection('servers').updateOne({ guildID: guild.id }, { $unset: { autorole: 1 } });
                 resolve(true);
-                return;
             } else {
                 await module.exports.connect();
                 await this.removeAutorole(guild);
