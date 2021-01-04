@@ -35,7 +35,7 @@ client.on('ready', async () => {
 
     await client.user.setActivity(activities[Math.floor(Math.random() * (activities.length - 1) + 1)], { type: 'WATCHING' },
         setInterval(() => {
-            client.user.setActivity(activities[Math.floor(Math.random() * (activities.length - 1) + 1)]);
+            client.user.setActivity(activities[Math.floor(Math.random() * (activities.length - 1) + 1)], { type: 'WATCHING' });
         }, 10000)
     );
 });
