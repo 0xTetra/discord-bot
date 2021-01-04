@@ -16,7 +16,7 @@ module.exports = {
             return await message.channel.send(permissionEmbed);
         }
         
-        if (args.length > 1) {
+        if (args.length >= 1) {
             if (args[0] == 'set') {
                 if (args.length == 2) {
                     const role = args[1];
