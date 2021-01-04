@@ -65,7 +65,7 @@ client.on('guildDelete', async (guild) => {
 
 
 // Give role upon member join
-client.on('GuildMemberAdd', member => {
+client.on('guildMemberAdd', async (member) => {
     console.log('User: ' + member.user.username + ' has joined the server!');
 });
 
