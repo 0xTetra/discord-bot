@@ -11,7 +11,7 @@ module.exports = {
             const permissionEmbed = new Discord.MessageEmbed()
                 .setColor('#ff0000')
                 .setTitle('Insufficent Permissions')
-                .setDescription('You do not have enough permissions to change this guild\'s server prefix.')
+                .setDescription('You do not have sufficient permissions to change this guild\'s server prefix.')
 
             return await message.channel.send(permissionEmbed);
         }
@@ -32,7 +32,7 @@ module.exports = {
                 const invalidSyntax = new Discord.MessageEmbed()
                     .setColor('#ff0000')
                     .setTitle('Invalid Syntax')
-                    .setDescription(`Usage: ${client.prefix}prefix set <prefix>`)
+                    .setDescription(`Usage: ${prefix}prefix set <prefix>`)
 
                 return await message.channel.send(invalidSyntax);
             }
