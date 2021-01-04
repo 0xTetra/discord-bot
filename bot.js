@@ -33,9 +33,9 @@ client.on('ready', async () => {
 
     await database.connect();
 
-    await client.user.setActivity(activities[Math.floor(Math.random() * (activities.length - 1) + 1)], { type: 'WATCHING' },
+    await client.user.setActivity(activities[Math.floor(Math.random() * activities.length)], { type: 'WATCHING' },
         setInterval(() => {
-            client.user.setActivity(activities[Math.floor(Math.random() * (activities.length - 1) + 1)], { type: 'WATCHING' });
+            client.user.setActivity(activities[Math.floor(Math.random() * activities.length)], { type: 'WATCHING' });
         }, 10000)
     );
 });
