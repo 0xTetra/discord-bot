@@ -100,4 +100,16 @@ module.exports = {
             }
         });
     },
+
+    removeAutorole: (guild) => {
+        return new Promise(async (Resolve, reject) => {
+            if (client.isConnected) {
+                await db.collection.('servers').updateOne({ guildID: guild.id }, { $unset: { autorole: role } });
+                resolve(true);
+            } else {
+                await module.exports.connect();
+                await this.removeAutorole(guild);
+            }
+        });
+    }
 }

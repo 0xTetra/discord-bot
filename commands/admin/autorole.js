@@ -29,6 +29,15 @@ module.exports = {
                     .setDescription(`You have successfully changed the auto role to ${role}.`);
 
                 return await message.channel.send(autoroleSuccess);
+            } else if (args[0] == 'off') {
+                await database.removeAutorole(message.guild);
+
+                const autoroleSuccess = new Discord.MessageEmbed()
+                    .setColor('#80ff33')
+                    .setTitle('Guild Auto Role Removed')
+                    .setDescription(`You have removed auto role from this guild.`);
+
+                return await message.channel.send(autoroleSuccess);
             } else {
                 const invalidSyntax = new Discord.MessageEmbed()
                     .setColor('#ff0000')
