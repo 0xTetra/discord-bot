@@ -18,9 +18,9 @@ module.exports = {
         
         if (args.length == 2) {
             if (args[0] == 'set') {
-                const role = args[1];
+                const role = args[1].replace(/[\\<>@#&!]/g, "");;
 
-                console.log(role.id);
+                console.log(role);
             } else {
                 const invalidSyntax = new Discord.MessageEmbed()
                     .setColor('#ff0000')
