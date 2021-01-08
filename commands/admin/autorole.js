@@ -23,6 +23,7 @@ module.exports = {
                     const roleID = role.replace(/[\\<>@#&!]/g, "")
 
                     const roleExists = message.guild.roles.cache.find(x => x.id == roleID)
+                    console.log(roleExists);
 
                     if (roleExists === undefined || !roleExists) {
                         const roleNotFound = new Discord.MessageEmbed()
