@@ -21,6 +21,17 @@ module.exports = {
                 if (args.length == 2) {
                     const role = args[1];
                     const roleID = role.replace(/[\\<>@#&!]/g, "")
+
+                    const roleExists = message.guild.roles.cache.find(x => x.id == roleID)
+
+                    if (roleExists === undefined || !roleExists) {
+                        const roleNotFound = new Discord.MessageEmbed()
+                            .setColor('#ff0000')
+                            .setTitle('Role Not Found')
+                            .setDescription(`The requested role does not exist.`)
+
+                        return await message.channel.send(roleNotFound);
+                    }
     
                     await database.setAutorole(message.guild, roleID);
     
