@@ -60,9 +60,10 @@ client.on('message', async (message) => {
         let args = content.slice(1);
         console.log(client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command.slice(prefix.length))));
         console.log(client.commands.find(cmd => console.log(cmd)));
+        console.log(command.slice(prefix.length));
 
         let commandFile = client.commands.get(command.slice(prefix.length) 
-        || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command.slice(prefix.length))))
+        || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command.slice(prefix.length))));
 
         if (commandFile) commandFile.run(client, message, args, prefix);
     });
