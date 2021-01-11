@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-const { green, white } = require('./managers/node_modules/chalk');
+const { green, white } = require('chalk');
 const database = require('/app/managers/database.js');
 
 const client = new Discord.Client();
