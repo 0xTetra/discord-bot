@@ -58,7 +58,7 @@ client.on('message', async (message) => {
         let content = message.content.split(' ');
         let command = content[0];
         let args = content.slice(1);
-        console.log(client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command.slice(prefix.length))));
+        console.log(client.commands.find(cmd => cmd.aliases.includes(command.slice(prefix.length))));
 
         let com = client.commands.get(command.slice(prefix.length) 
         || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command.slice(prefix.length))));
