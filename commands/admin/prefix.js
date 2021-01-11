@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const database = require('/app/database/database.js');
+const database = require('/app/managers/database.js');
 
 module.exports = {
     name: 'prefix',

@@ -111,5 +111,17 @@ module.exports = {
                 await this.removeAutorole(guild);
             }
         });
+    },
+    
+    addReactionRole: (guild, roleID, messageID, emoji) => {
+        return new Promise(async (resolve, reject) => {
+            if (client.isConnected) {
+                await db.collection('servers').updateOne({ guildID: guild.id }, { $set: { reactionroles: [messageID, roleID, emoji] } });
+                resolve(true);
+            } else {
+                await module.exports.connect();
+                await this.addReactionRole(guild, messageID, emoji);
+            }
+        });
     }
 }

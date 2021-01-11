@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-const { green, white } = require('chalk');
-const database = require('/app/database/database.js');
+const { green, white } = require('./managers/node_modules/chalk');
+const database = require('/app/managers/database.js');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -59,7 +59,9 @@ client.on('message', async (message) => {
         let command = content[0];
         let args = content.slice(1);
 
-        let commandFile = client.commands.get(command.slice(prefix.length));
+        let commandFile = client.commands.get(command.slice(prefix.length) 
+        || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command.slice(prefix.length))));
+
         if (commandFile) commandFile.run(client, message, args, prefix);
     });
 
