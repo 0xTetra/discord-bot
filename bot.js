@@ -59,8 +59,8 @@ client.on('message', async (message) => {
         let command = content[0];
         let args = content.slice(1);
         console.log(client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command.slice(prefix.length))));
-        console.log(client.commands.find(cmd => console.log(cmd)));
-        console.log(command.slice(prefix.length));
+        //console.log(client.commands.find(cmd => console.log(cmd)));
+        //console.log(command.slice(prefix.length));
 
         let commandFile = client.commands.get(command.slice(prefix.length) 
         || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command.slice(prefix.length))));
