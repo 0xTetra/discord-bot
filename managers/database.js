@@ -99,29 +99,5 @@ module.exports = {
                 await this.getAutorole(guild);
             }
         });
-    },
-
-    removeAutorole: (guild) => {
-        return new Promise(async (resolve, reject) => {
-            if (client.isConnected) {
-                await db.collection('servers').updateOne({ guildID: guild.id }, { $unset: { autorole: 1 } });
-                resolve(true);
-            } else {
-                await module.exports.connect();
-                await this.removeAutorole(guild);
-            }
-        });
-    },
-    
-    addReactionRole: (guild, roleID, messageID, emoji) => {
-        return new Promise(async (resolve, reject) => {
-            if (client.isConnected) {
-                await db.collection('servers').updateOne({ guildID: guild.id }, { $set: { reactionroles: [messageID, roleID, emoji] } });
-                resolve(true);
-            } else {
-                await module.exports.connect();
-                await this.addReactionRole(guild, messageID, emoji);
-            }
-        });
     }
 }
