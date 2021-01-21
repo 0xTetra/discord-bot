@@ -59,9 +59,7 @@ client.on('message', async (message) => {
         let command = content[0];
         let args = content.slice(1);
 
-        let com = client.commands.get(command.slice(prefix.length) 
-        || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command.slice(prefix.length))));
-        console.log(com);
+        let com = client.commands.get(command.slice(prefix.length));
 
         if (com) com.run(client, message, args, prefix);
     });
