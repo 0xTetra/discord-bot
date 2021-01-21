@@ -6,12 +6,12 @@ module.exports = {
     description: 'Forces the bot to join a voice channel.',
     category: 'music',
     run: async (client, message, args, prefix) => {
-        if (message.member.voice.channel) return await message.member.voice.channel.join();
+        if (client.user.voiceChannel) return await client.user.voiceChannel.leave();
 
         const invalidChannel = new Discord.MessageEmbed()
                     .setColor('#ff0000')
-                    .setTitle('Failed to Join')
-                    .setDescription(`You need to join a voice channel before running this command.`)
+                    .setTitle('Failed to Leave')
+                    .setDescription(`The bot current isn't in a voice channel.`)
 
         return await message.channel.send(invalidChannel);
     }
