@@ -6,7 +6,7 @@ module.exports = {
     description: 'Forces the bot to leave a voice channel.',
     category: 'music',
     run: async (client, message, args, prefix) => {
-        if (client.user.voiceChannel) return await client.user.voiceChannel.leave();
+        if (client.user.voice.channel) return await client.user.voice.channel.leave();
 
         const invalidChannel = new Discord.MessageEmbed()
                     .setColor('#ff0000')
