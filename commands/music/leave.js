@@ -1,12 +1,21 @@
 const Discord = require('discord.js');
-const database = require('/app/managers/database.js');
+const voiceChannel = require('/app/managers/voiceChannel.js');
 
 module.exports = {
     name: 'leave',
     description: 'Forces the bot to leave a voice channel.',
     category: 'music',
     run: async (client, message, args, prefix) => {
-        if (client.user.voice.channel) return await client.user.voice.channel.leave();
+        if (client.user.voiceChannel) {
+            await voiceChannel.leaveChannel(client.user.voiceChannel);
+
+            const leaveSuccess = new Discord.MessageEmbed()
+                    .setColor('#80ff33')
+                    .setTitle('Left Voice Channel')
+                    .setDescription(`I have successfully left the voice channel!\nView more music-related commands with ${prefix}help music`);
+
+            return await message.channel.send(leaveSuccess);
+        }
 
         const invalidChannel = new Discord.MessageEmbed()
                     .setColor('#ff0000')
