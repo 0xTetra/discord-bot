@@ -12,7 +12,7 @@ module.exports = {
             const connectionSuccess = new Discord.MessageEmbed()
                     .setColor('#80ff33')
                     .setTitle('Joined Voice Channel')
-                    .setDescription(`I have successfully joined the voice channel!\nView more music-related commands with ${prefix}help music`);
+                    .setDescription(`I have successfully joined the voice channel!\nView more music-related commands with \`${prefix}help music\``);
 
             return await message.channel.send(connectionSuccess);
         }
