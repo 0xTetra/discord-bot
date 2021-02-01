@@ -6,17 +6,14 @@ module.exports = {
     description: 'Shows COVID-19 Stats globally, or for a specific country.',
     category: 'misc',
     run: async (client, message, args) => {
-        const formatNumber = async (x) => {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
 
         await axios.get('https://api.covid19api.com/summary').then(stats => {
-            const globalNewConfirmed = formatNumber(stats.data.Global.NewConfirmed).then(x => globalNewConfirmed = x);
-            const globalTotalConfirmed = formatNumber(stats.data.Global.TotalConfirmed).then(x => globalTotalConfirmed = x);
-            const globalNewDeaths = formatNumber(stats.data.Global.NewDeaths).then(x => globalNewDeaths = x);
-            const globalTotalDeaths = formatNumber(stats.data.Global.TotalDeaths).then(x => globalTotalDeaths = x);
-            const globalNewRecovered = formatNumber(stats.data.Global.NewRecovered).then(x => globalNewRecovered = x);
-            const globalTotalRecovered = formatNumber(stats.data.Global.TotalRecovered).then(x => globalTotalRecovered = x);
+            const globalNewConfirmed = stats.data.Global.NewConfirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            const globalTotalConfirmed = stats.data.Global.TotalConfirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            const globalNewDeaths = stats.data.Global.NewDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            const globalTotalDeaths = stats.data.Global.TotalDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            const globalNewRecovered = stats.data.Global.NewRecovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            const globalTotalRecovered = stats.data.Global.TotalRecovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
             const statsEmbed = new Discord.MessageEmbed()
                 .setColor('#80ff33')
