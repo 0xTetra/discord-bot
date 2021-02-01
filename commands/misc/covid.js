@@ -18,12 +18,12 @@ module.exports = {
                 .setColor('#80ff33')
                 .setTitle('Global COVID-19 Stats')
                 .addFields(
-                    { name: 'New Confirmed', value: globalNewConfirmed },
-                    { name: 'Total Confirmed', value: globalTotalConfirmed },
-                    { name: 'New Deaths', value: globalNewDeaths },
-                    { name: 'Total Deaths', value: globalTotalDeaths },
-                    { name: 'New Recovered', value: globalNewRecovered },
-                    { name: 'Total Recovered', value: globalTotalRecovered }
+                    { name: 'New Confirmed', value: globalNewConfirmed, inline: true },
+                    { name: 'Total Confirmed', value: globalTotalConfirmed, inline: true },
+                    { name: 'New Deaths', value: globalNewDeaths, inline: true },
+                    { name: 'Total Deaths', value: globalTotalDeaths, inline: true },
+                    { name: 'New Recovered', value: globalNewRecovered, inline: true },
+                    { name: 'Total Recovered', value: globalTotalRecovered, inline: true }
                 );
 
             return message.channel.send(statsEmbed);
