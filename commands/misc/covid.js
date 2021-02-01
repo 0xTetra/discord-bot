@@ -7,12 +7,12 @@ module.exports = {
     category: 'misc',
     run: async (client, message, args) => {
         await axios.get('https://api.covid19api.com/summary').then(stats => {
-            const globalNewConfirmed = stats.global.NewConfirmed;
-            const globalTotalConfirmed = stats.global.TotalConfirmed;
-            const globalNewDeaths = stats.global.NewDeaths;
-            const globalTotalDeaths = stats.global.TotalDeaths;
-            const globalNewRecovered = stats.global.NewRecovered;
-            const globalTotalRecovered = stats.global.TotalRecovered;
+            const globalNewConfirmed = stats.Global.NewConfirmed;
+            const globalTotalConfirmed = stats.Global.TotalConfirmed;
+            const globalNewDeaths = stats.Global.NewDeaths;
+            const globalTotalDeaths = stats.Global.TotalDeaths;
+            const globalNewRecovered = stats.Global.NewRecovered;
+            const globalTotalRecovered = stats.Global.TotalRecovered;
 
             const statsEmbed = new Discord.MessageEmbed()
                 .setColor('#80ff33')
