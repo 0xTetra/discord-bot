@@ -26,7 +26,7 @@ module.exports = {
                     { name: 'Total Recovered', value: globalTotalRecovered }
                 );
 
-            await message.channel.send(statsEmbed);
+            message.channel.send(statsEmbed);
         });
 
     }
