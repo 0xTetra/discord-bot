@@ -11,12 +11,12 @@ module.exports = {
         }
 
         await axios.get('https://api.covid19api.com/summary').then(stats => {
-            const globalNewConfirmed = formatNumber(stats.data.Global.NewConfirmed);
-            const globalTotalConfirmed = formatNumber(stats.data.Global.TotalConfirmed);
-            const globalNewDeaths = formatNumber(stats.data.Global.NewDeaths);
-            const globalTotalDeaths = formatNumber(stats.data.Global.TotalDeaths);
-            const globalNewRecovered = formatNumber(stats.data.Global.NewRecovered);
-            const globalTotalRecovered = formatNumber(stats.data.Global.TotalRecovered);
+            const globalNewConfirmed = formatNumber(stats.data.Global.NewConfirmed).then(x => globalNewConfirmed = x);
+            const globalTotalConfirmed = formatNumber(stats.data.Global.TotalConfirmed).then(x => globalTotalConfirmed = x);
+            const globalNewDeaths = formatNumber(stats.data.Global.NewDeaths).then(x => globalNewDeaths = x);
+            const globalTotalDeaths = formatNumber(stats.data.Global.TotalDeaths).then(x => globalTotalDeaths = x);
+            const globalNewRecovered = formatNumber(stats.data.Global.NewRecovered).then(x => globalNewRecovered = x);
+            const globalTotalRecovered = formatNumber(stats.data.Global.TotalRecovered).then(x => globalTotalRecovered = x);
 
             const statsEmbed = new Discord.MessageEmbed()
                 .setColor('#80ff33')
